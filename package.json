@@ -19,7 +19,7 @@
     "sass": "^1.63.6"
   },
   "scripts": {
-    "dev": "parcel ./src/views/pages/index.html"
+    "dev": "parcel index.html"
   },
   "type": "module",
   "keywords": [],
