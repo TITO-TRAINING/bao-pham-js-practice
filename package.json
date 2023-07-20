@@ -1,0 +1,33 @@
+{
+  "name": "tito_practicejs",
+  "description": "Practice JavaScript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "dom-serializer": "^1.4.1",
+    "domelementtype": "^2.3.0",
+    "domhandler": "^4.3.1",
+    "domutils": "^2.8.0",
+    "entities": "^3.0.1",
+    "eslint-config-prettier": "^8.8.0",
+    "htmlparser2": "^7.2.0",
+    "is-json": "^2.0.1",
+    "parcel": "^2.9.3",
+    "posthtml-parser": "^0.11.0",
+    "posthtml-render": "^3.0.0",
+    "prettier": "^3.0.0",
+    "sass": "^1.63.6"
+  },
+  "scripts": {
+    "dev": "parcel ./src/views/pages/index.html"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "posthtml": "^0.16.6",
+    "posthtml-doctype": "^1.1.1",
+    "posthtml-include": "^1.7.4"
+  }
+}
