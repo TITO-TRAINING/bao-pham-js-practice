@@ -1,0 +1,38 @@
+@use '../abstracts/' as *;
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url(../../assets/fonts/PlusJakartaSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url(../../assets/fonts/PlusJakartaSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../../assets/fonts/PlusJakartaSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url(../../assets/fonts/PlusJakartaSans-SemiBold.ttf);
+}
+
+body {
+  font-family: $primary-font;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: pxToRem(24);
+  @include textColorPrimary;
+  @include tablet {
+    font-size: pxToRem(11);
+    line-height: pxToRem(16);
+  }
+}
+
+// .container {
+//   max-width: 1620px;
+//   margin: auto;
+// }

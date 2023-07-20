@@ -1,0 +1,19 @@
+@use '../abstracts/' as *;
+
+header {
+  width: 100%;
+  background-color: $bg-color-primary;
+}
+
+header > .header_container {
+  display: flex;
+  padding: 25px;
+}
+
+.logo {
+  margin-right: 100px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 30px;
+}
+

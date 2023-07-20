@@ -1,0 +1,16 @@
+// Font family
+$primary-font: Poppins-Regular;
+$second-font: Poppins-Bold;
+$third-font: Poppins-Medium;
+
+// Breakpoints
+
+$medium: 768px;
+$extra-lager: 1200px;
+
+$mobile: calc($medium - 1px);
+$tablet: calc($extra-lager - 1px);
+
+// Colors
+$bg-color-primary: #053742;
+$text-color-primary: #f2f5f7;

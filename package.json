@@ -19,13 +19,14 @@
     "sass": "^1.63.6"
   },
   "scripts": {
-    "dev": "parcel ./src/views/pages/index.html"
+    "dev": "parcel index.html"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
     "posthtml": "^0.16.6",
     "posthtml-doctype": "^1.1.1",
     "posthtml-include": "^1.7.4"
