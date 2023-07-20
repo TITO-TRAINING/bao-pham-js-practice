@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'functions' as *;
+
+// Media-Query Mixin
+@mixin mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin textColorPrimary {
+  color: $text-color-primary;
+}
+
+@mixin GilroyRegular {
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin GilroyBold {
+  font-family: $second-font;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin GilroyMedium {
+  font-family: $four-font;
+  font-style: normal;
+  font-weight: 100;
+}
+
+@mixin typeOfText {
+  text-transform: uppercase;
+  font-weight: bold;
+}

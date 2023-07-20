@@ -1,0 +1,14 @@
+@use '../abstracts/' as *;
+
+nav > a {
+  text-decoration: none;
+  color: $text-color-primary;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+nav > a:hover {
+  transform: translateY(3px);
+  transition: all ease 0.3s;
+}

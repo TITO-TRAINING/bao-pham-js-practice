@@ -6,7 +6,7 @@ const NAVIGATION = [
   },
   {
     id: 1,
-    title: 'About to',
+    title: 'About Us',
     href: '#',
   },
   {
