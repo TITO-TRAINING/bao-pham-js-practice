@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+form {
+  margin: auto;
+  min-width: 300px;
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  button {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: $bg-color-primary;
+    color: $text-color-primary;
+    cursor: pointer;
+    grid-column: 1/3;
+  }
+}
