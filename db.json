@@ -1,0 +1,22 @@
+{
+  "person": [
+    {
+      "id": 1,
+      "name": "Phạm Như Quốc Bảo",
+      "age": "22",
+      "address": "24 Mai Anh Tuấn, Hòa Xuân, Cẩm Lệ"
+    },
+    {
+      "id": 2,
+      "name": "Phạm Như Quốc Bảo",
+      "age": "22",
+      "address": "24 Mai Anh Tuấn, Hòa Xuân, Cẩm Lệ"
+    },
+    {
+      "id": 3,
+      "name": "Phạm Như Quốc Bảo",
+      "age": "22",
+      "address": "24 Mai Anh Tuấn, Hòa Xuân, Cẩm Lệ"
+    }
+  ]
+}

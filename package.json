@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "axios": "^1.4.0",
     "dom-serializer": "^1.4.1",
     "domelementtype": "^2.3.0",
     "domhandler": "^4.3.1",
@@ -12,6 +13,7 @@
     "eslint-config-prettier": "^8.8.0",
     "htmlparser2": "^7.2.0",
     "is-json": "^2.0.1",
+    "json-server": "^0.17.3",
     "parcel": "^2.9.3",
     "posthtml-parser": "^0.11.0",
     "posthtml-render": "^3.0.0",
@@ -19,7 +21,8 @@
     "sass": "^1.63.6"
   },
   "scripts": {
-    "dev": "parcel index.html"
+    "dev": "parcel index.html",
+    "server": "json-server --watch db.json"
   },
   "type": "module",
   "keywords": [],
@@ -27,6 +30,7 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.9.3",
+    "buffer": "^6.0.3",
     "posthtml": "^0.16.6",
     "posthtml-doctype": "^1.1.1",
     "posthtml-include": "^1.7.4"
