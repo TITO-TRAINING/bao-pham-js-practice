@@ -1,5 +1,7 @@
 @use "../abstracts/" as *;
 @forward "nav";
+@forward "table";
+@forward "actionTable";
 
 .container {
   max-width: 1340px;
