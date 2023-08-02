@@ -1,8 +1,8 @@
 import ActionTable from "../layouts/actionTable";
 
-const Table = (COLUMNS, DATA) => {
+const Table = (COLUMNS) => {
   return `
-    <table class="content-table">
+    <table class="content-table person-table">
       <thead>
         <tr>
         ${COLUMNS.map((value) => {
@@ -10,19 +10,7 @@ const Table = (COLUMNS, DATA) => {
         })}
       </tr>
       </thead>
-      <tbody>
-        ${DATA.map(value => {
-          return `<tr>
-            <td>${value.id}</td>
-            <td>${value.name}</td>
-            <td>${value.age}</td>
-            <td>${value.address}</td>
-            <td>
-              ${ActionTable()}
-            </td>
-          </tr>`;
-        })}
-      </tbody>
+
     </table>
   `;
 };
