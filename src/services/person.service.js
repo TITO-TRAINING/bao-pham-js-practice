@@ -12,9 +12,10 @@ class PersonService {
       const { data } = await INSTANCE.get(this.endpoint);
 
       this.persons = data.map((person) => {
-        new PersonSchema(person);
+        return new PersonSchema(person);
       });
 
+      return this.persons;
     } catch (error) {
       alert(error);
       throw error;
@@ -50,9 +51,9 @@ class PersonService {
     }
   }
 
-  async remove(id) {
+  async delete(id) {
     try {
-      await INSTANCE.delete(`${this.endpoint}/${id}`);
+      const { data } = await INSTANCE.delete(`${this.endpoint}/${id}`);
     } catch (error) {
       alert(error);
       throw error;

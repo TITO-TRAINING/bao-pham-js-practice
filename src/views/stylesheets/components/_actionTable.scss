@@ -1,8 +1,18 @@
 @use '../abstracts/' as *;
 
-.content-table svg {
-  width: 25px;
-  height: 25px;
+.content-table .action-table {
+  cursor: pointer;
+  background: none;
+  border: none;
   margin: 0 5px;
-  color: red;
+  padding: 5px 10px;
+}
+
+.delete.action-table i {
+  color: rgb(233, 48, 48);
+}
+
+.action-table i {
+  font-size: 20px;
+  width: 5px;
 }
