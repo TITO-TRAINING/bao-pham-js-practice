@@ -53,7 +53,7 @@ class AppView {
   bindUpdatePerson(callback) {
     this.table.addEventListener('click', (e) => {
       if (e.target.closest('.update')) {
-        const [ person ] = this.persons.filter(
+        const [person] = this.persons.filter(
           (person) => person.id == e.target.closest('tr').dataset.id,
         );
         this.Data = person;
@@ -65,7 +65,6 @@ class AppView {
     this.table.addEventListener('click', (e) => {
       if (e.target.closest('.delete')) {
         callback(e.target.closest('tr').dataset.id);
-        // console.log(callback);
       }
     });
   }

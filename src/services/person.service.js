@@ -1,3 +1,5 @@
+import Toast from '../utils/toast';
+import { TOAST_MESSAGE } from '../enums/toast';
 import INSTANCE from '../utils/request';
 import PersonSchema from '../model/person';
 
@@ -17,7 +19,7 @@ class PersonService {
 
       return this.persons;
     } catch (error) {
-      alert(error);
+      Toast.error(error);
       throw error;
     }
   }
@@ -28,10 +30,11 @@ class PersonService {
       if (data) {
         this.persons.push(data);
       }
+      Toast.success(TOAST_MESSAGE.CREATE);
 
       return data;
     } catch (error) {
-      alert(error);
+      Toast.error(error);
       throw error;
     }
   }
@@ -43,10 +46,11 @@ class PersonService {
       if (data) {
         this.persons.push(data);
       }
+      Toast.success(TOAST_MESSAGE.UPDATE);
 
       return data;
     } catch (error) {
-      alert(error);
+      Toast.error(error);
       throw error;
     }
   }
@@ -54,8 +58,9 @@ class PersonService {
   async delete(id) {
     try {
       const { data } = await INSTANCE.delete(`${this.endpoint}/${id}`);
+      Toast.success(TOAST_MESSAGE.DELETE);
     } catch (error) {
-      alert(error);
+      Toast.error(error);
       throw error;
     }
   }
