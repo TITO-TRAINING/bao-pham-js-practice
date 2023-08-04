@@ -1,16 +1,19 @@
 import INPUT_FIELD from '../../constants/form';
 import FormGroup from './formGroup';
 
-const Form = (type) => {
+const Form = () => {
   return `
     <div class="container">
-      <h2>${type}</h2>
-      <form id="form_person class="form_person">
-        ${INPUT_FIELD.map((value) => {
-          return FormGroup(value);
-        }).join('')}
-        <button type="submit" id="submit">Insert</button>
-      </form>
+      <div class="form-wrapper">
+        <h2 class="form-title"></h2>
+        <form>
+          ${INPUT_FIELD.map((value) => {
+            return FormGroup(value);
+          }).join('')}
+          <button type="submit" class="btn-add">Add</button>
+          <button type="submit" class="btn-save" hidden>Update</button>
+        </form>
+      </div>
     </div>
   `;
 };

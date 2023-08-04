@@ -1,6 +1,7 @@
 @use '../abstracts/' as *;
 
 .toast-box {
+  z-index: 99999;
   position: absolute;
   bottom: 0;
   right: 0;

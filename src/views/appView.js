@@ -1,6 +1,7 @@
 import HomePage from './pages/homePage';
 import getNode from '../utils/getNode';
 import PersonItem from './components/personItem';
+import Toast from '../utils/toast';
 
 class AppView {
   constructor() {
@@ -8,14 +9,28 @@ class AppView {
     this.createApp();
     this.persons = [];
 
-    const selectors = ['#submit', '.person-table'];
-    const [btnAdd, table] = getNode(selectors);
+    const selectors = [
+      '.btn-insert',
+      '.btn-add',
+      '.person-table',
+      '.overlay',
+      '.btn-save',
+      '.form-title',
+    ];
+    const [btnInsert, btnAdd, table, form, btnUpdate, formTitle] =
+      getNode(selectors);
 
     this.btnAdd = btnAdd;
+    this.btnInsert = btnInsert;
+    this.btnUpdate = btnUpdate;
     this.table = table;
+    this.form = form;
+    this.formTitle = formTitle;
+
+    this.popupForm();
   }
 
-  set Data({ name, age, address }) {
+  set DataForm({ name = '', age = '', address = '' }) {
     const selectors = ['#name', '#age', '#address'];
     const [inputName, inputAge, inputAddress] = getNode(selectors);
     inputName.value = name;
@@ -23,7 +38,7 @@ class AppView {
     inputAddress.value = address;
   }
 
-  get Data() {
+  get DataForm() {
     const selectors = ['#name', '#age', '#address'];
     const [inputName, inputAge, inputAddress] = getNode(selectors);
 
@@ -38,6 +53,24 @@ class AppView {
     this.app.innerHTML = HomePage();
   };
 
+  popupForm = () => {
+    this.btnInsert.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.DataForm = '';
+      this.form.hidden = false;
+      this.btnAdd.hidden = false;
+      this.btnUpdate.hidden = true;
+      this.formTitle.innerHTML = 'Add new person';
+    });
+
+    this.form.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (e.target.className === 'overlay') {
+        this.form.hidden = true;
+      }
+    });
+  };
+
   renderPerson(persons) {
     this.persons = persons;
     this.table.innerHTML += PersonItem(persons);
@@ -46,17 +79,35 @@ class AppView {
   bindAddPerson(callback) {
     this.btnAdd.addEventListener('click', (e) => {
       e.preventDefault();
-      callback(this.Data);
+      callback(this.DataForm);
+      this.form.hidden = true;
     });
   }
 
   bindUpdatePerson(callback) {
+    let idPerson;
+
+    this.btnUpdate.addEventListener('click', () => {
+      if (idPerson) {
+        callback(idPerson, this.DataForm);
+        this.form.hidden = true;
+      } else {
+        Toast.error('Có lỗi xảy ra, vui lòng reload trang!');
+      }
+    });
+
     this.table.addEventListener('click', (e) => {
       if (e.target.closest('.update')) {
-        const [person] = this.persons.filter(
+        let [person] = this.persons.filter(
           (person) => person.id == e.target.closest('tr').dataset.id,
         );
-        this.Data = person;
+
+        idPerson = person.id;
+        this.DataForm = person;
+        this.formTitle.innerHTML = 'Update person';
+        this.form.hidden = false;
+        this.btnUpdate.hidden = false;
+        this.btnAdd.hidden = true;
       }
     });
   }
