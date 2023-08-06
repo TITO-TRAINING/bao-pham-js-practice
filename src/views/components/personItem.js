@@ -2,7 +2,6 @@ import ActionTable from '../layouts/actionTable';
 
 const PersonItem = (persons) => {
   return `
-    <tbody>
       ${persons
         .map((person) => {
           return `
@@ -17,7 +16,6 @@ const PersonItem = (persons) => {
             </tr>`;
         })
         .join('')}
-    </tbody>
   `;
 };
 

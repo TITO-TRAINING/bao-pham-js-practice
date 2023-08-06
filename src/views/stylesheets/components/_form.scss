@@ -33,6 +33,7 @@ form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  color: $text-color-second;
   // @include boxShadow;
   button {
     font-size: 16px;
