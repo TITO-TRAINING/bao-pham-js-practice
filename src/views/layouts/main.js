@@ -8,6 +8,9 @@ const Main = () => {
     <main>
       ${Menu()}
       <div class="container">
+        <div class"not-content">
+          <p class='empty-message'></p>
+        </div>
         ${Table(COLUMNS, DATA)}
         <div class="overlay" hidden>
           ${Form()}

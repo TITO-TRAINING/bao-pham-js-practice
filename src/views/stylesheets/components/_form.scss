@@ -20,6 +20,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $bg-color-second;
+  @include boxShadow;
 }
 
 h2 {

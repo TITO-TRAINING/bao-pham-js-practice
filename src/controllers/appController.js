@@ -8,10 +8,11 @@ class AppController {
     this.app.bindAddPerson(this.handleAddPerson);
     this.app.bindUpdatePerson(this.handleUpdatePerson);
     this.app.bindDeletePerson(this.handleDeletePerson);
+    this.app.bindSearch(this.handleSearch);
   }
 
-  onDataChanged = (persons) => {
-    this.app.renderPerson(persons);
+  onDataChanged = (persons, type = 'get') => {
+    this.app.renderPerson(persons, type);
   };
 
   async handleDisplayData() {
@@ -30,6 +31,10 @@ class AppController {
   handleDeletePerson = (id) => {
     this.personService.delete(id);
   };
+
+  handleSearch = (key) => {
+    this.personService.search(key);
+  }
 }
 
 export default AppController;

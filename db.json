@@ -2,14 +2,14 @@
   "person": [
     {
       "name": "Phạm Như Quốc Bảo",
-      "age": "22",
-      "address": "24 Mai Anh Tuấn",
+      "age": "21",
+      "address": "Quảng Trị",
       "id": 1
     },
     {
-      "name": "Bùi Thị Bích Trâm",
-      "age": "22",
-      "address": "KTX Việt Hàn",
+      "name": "Võ Tuấn Kiệt",
+      "age": "21",
+      "address": "Gio Linh, Quảng Trị",
       "id": 2
     },
     {
@@ -17,6 +17,24 @@
       "age": "20",
       "address": "Gio Linh, Quảng Trị",
       "id": 3
+    },
+    {
+      "name": "Kìn dubai",
+      "age": "21",
+      "address": "24 Mai Anh Tuấn",
+      "id": 4
+    },
+    {
+      "name": "Phạm Như Quốc Bảo",
+      "age": "21",
+      "address": "20",
+      "id": 5
+    },
+    {
+      "name": "Bùi Thị Bích Trâm",
+      "age": "20",
+      "address": "Quảng Bình",
+      "id": 6
     }
   ]
 }
