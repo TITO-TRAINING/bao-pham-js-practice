@@ -95,6 +95,7 @@ class AppView {
       this.table.parentElement.hidden = false;
       emptyMessage.innerHTML = '';
       this.table.innerHTML = PersonItem(persons);
+      this.pagination();
     }
     if (persons.length === 0) {
       this.table.parentElement.hidden = true;
@@ -178,6 +179,65 @@ class AppView {
       callback(inputSearch.value);
     });
   }
+
+  pagination = () => {
+    let limit = 6;
+    let thisPage = 1;
+    let dataTable = this.table.querySelectorAll('tr[data-id]');
+    const pagination = document.querySelector('.pagination ul');
+
+    loadItem();
+    function loadItem() {
+      let beginGet = limit * (thisPage - 1);
+      let endGet = limit * thisPage - 1;
+      dataTable.forEach((item, index) => {
+        if (index >= beginGet && index <= endGet) {
+          item.hidden = false;
+        } else {
+          item.hidden = true;
+        }
+      });
+      listPage();
+    }
+
+    function listPage() {
+      let count = Math.ceil(dataTable.length / limit);
+      pagination.innerHTML = '';
+
+      if (thisPage !== 1) {
+        let prev = document.createElement('li');
+        prev.innerHTML = '<<';
+        prev.addEventListener('click', () => changePage(thisPage--));
+        pagination.appendChild(prev);
+      }
+
+      for (let i = 1; i <= count; i++) {
+        let newPage = document.createElement('li');
+        newPage.innerHTML = i;
+        if (i === thisPage) {
+          newPage.classList.add('active');
+        }
+        newPage.addEventListener('click', () => changePage(i));
+        pagination.appendChild(newPage);
+      }
+
+      if (thisPage !== count) {
+        let next = document.createElement('li');
+        next.innerHTML = '>>';
+        next.addEventListener('click', () => changePage(thisPage++));
+        pagination.appendChild(next);
+      }
+
+      if (count === 0) {
+        pagination.innerHTML = '';
+      }
+    }
+
+    function changePage(i) {
+      thisPage = i;
+      loadItem();
+    }
+  };
 }
 
 export default AppView;

@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  ul {
+    display: flex;
+    gap: 10px;
+    li {
+      font-size: 12px;
+      padding: 6px 14px;
+      background: $bg-color-second;
+      color: $bg-color-primary;
+      cursor: pointer;
+      &.active {
+        background: $bg-color-primary;
+        color: $text-color-primary;
+      }
+    }
+  }
+}

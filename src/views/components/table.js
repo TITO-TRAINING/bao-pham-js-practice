@@ -10,6 +10,10 @@ const Table = (COLUMNS) => {
       </thead>
       <tbody></tbody>
     </table>
+    <div class="pagination">
+        <ul>
+        </ul>
+    </div>
   `;
 };
 
