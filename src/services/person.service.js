@@ -9,6 +9,14 @@ class PersonService {
     this.endpoint = '/person';
   }
 
+  bindOnDataChanged = (callback) => {
+    this.onDataChanged = callback;
+  };
+
+  commitPersons = (persons) => {
+    this.onDataChanged(persons);
+  };
+
   async getAllPerson() {
     try {
       const { data } = await INSTANCE.get(this.endpoint);
@@ -28,11 +36,10 @@ class PersonService {
     try {
       const { data } = await INSTANCE.post(this.endpoint, person);
       if (data) {
-        this.persons.push(data);
+        this.persons.push(new PersonSchema(data));
       }
+      this.commitPersons(this.persons);
       Toast.success(TOAST_MESSAGE.CREATE);
-
-      return data;
     } catch (error) {
       Toast.error(error);
       throw error;
@@ -44,11 +51,14 @@ class PersonService {
       const { data } = await INSTANCE.put(`${this.endpoint}/${id}`, newPerson);
 
       if (data) {
-        this.persons.push(data);
+        this.persons.map((person, index) => {
+          if (person.id === id) {
+            this.persons[index] = new PersonSchema(data);
+          }
+        });
       }
+      this.commitPersons(this.persons);
       Toast.success(TOAST_MESSAGE.UPDATE);
-
-      return data;
     } catch (error) {
       Toast.error(error);
       throw error;
@@ -58,6 +68,14 @@ class PersonService {
   async delete(id) {
     try {
       const { data } = await INSTANCE.delete(`${this.endpoint}/${id}`);
+      if (data) {
+        this.persons = this.persons.filter((person) => {
+          console.log(person.id + "and" + id);
+          return person.id != id;
+        });
+        console.log(this.persons);
+      }
+      this.commitPersons(this.persons);
       Toast.success(TOAST_MESSAGE.DELETE);
     } catch (error) {
       Toast.error(error);

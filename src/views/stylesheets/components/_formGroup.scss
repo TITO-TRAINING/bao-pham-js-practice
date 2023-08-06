@@ -24,4 +24,17 @@
     grid-column: 1/5;
     grid-row: 2/3;
   }
+  .error-message {
+    font-size: 12px;
+  }
+}
+
+.invalid {
+  input {
+    border-color: red;
+  }
+
+  .error-message {
+    color: red;
+  }
 }

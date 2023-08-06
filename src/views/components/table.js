@@ -1,5 +1,3 @@
-import ActionTable from "../layouts/actionTable";
-
 const Table = (COLUMNS) => {
   return `
     <table class="content-table person-table">
@@ -10,7 +8,7 @@ const Table = (COLUMNS) => {
         })}
       </tr>
       </thead>
-
+      <tbody></tbody>
     </table>
   `;
 };

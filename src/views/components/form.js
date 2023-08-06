@@ -6,7 +6,7 @@ const Form = () => {
     <div class="container">
       <div class="form-wrapper">
         <h2 class="form-title"></h2>
-        <form>
+        <form id="form-person">
           ${INPUT_FIELD.map((value) => {
             return FormGroup(value);
           }).join('')}
