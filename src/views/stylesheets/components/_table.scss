@@ -38,3 +38,9 @@ table {
     }
   }
 }
+
+.empty-message {
+  color: rgba($color: $text-color-second, $alpha: 0.8);
+  font-size: 20px;
+  text-align: center;
+}

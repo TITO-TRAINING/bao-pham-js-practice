@@ -70,10 +70,8 @@ class PersonService {
       const { data } = await INSTANCE.delete(`${this.endpoint}/${id}`);
       if (data) {
         this.persons = this.persons.filter((person) => {
-          console.log(person.id + "and" + id);
           return person.id != id;
         });
-        console.log(this.persons);
       }
       this.commitPersons(this.persons);
       Toast.success(TOAST_MESSAGE.DELETE);
@@ -82,6 +80,22 @@ class PersonService {
       throw error;
     }
   }
+
+  search = (key) => {
+    if (key) {
+      key = key.toLowerCase();
+      const tempPersons = this.persons.filter(({ name, age, address }) => {
+        return (
+          name.toLowerCase().includes(key) ||
+          age.toLowerCase().includes(key) ||
+          address.toLowerCase().includes(key)
+        );
+      });
+      this.onDataChanged(tempPersons, 'search');
+    } else {
+      this.onDataChanged(this.persons);
+    }
+  };
 }
 
 export default PersonService;

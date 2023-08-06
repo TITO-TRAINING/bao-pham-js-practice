@@ -1,8 +1,6 @@
 import HomePage from './pages/homePage';
 import getNode from '../utils/getNode';
 import PersonItem from './components/personItem';
-import Toast from '../utils/toast';
-import { TOAST_MESSAGE } from '../enums/toast';
 import Validator from '../utils/validator';
 import {
   isRequired,
@@ -35,6 +33,7 @@ class AppView {
     this.formTitle = formTitle;
 
     this.popupForm();
+    this.closeToast();
   }
 
   set DataForm({ name = '', age = '', address = '' }) {
@@ -79,9 +78,34 @@ class AppView {
     });
   };
 
-  renderPerson(persons) {
-    this.persons = persons;
-    this.table.innerHTML = PersonItem(persons);
+  closeToast = () => {
+    const toastBox = document.querySelector('.toast-box');
+    const toastItem = toastBox.querySelector('.toast-item');
+    toastBox.addEventListener('click', (e) => {
+      if (e.target.closest('.toast-item')) {
+        toastBox.remove(toastItem);
+      }
+    });
+  };
+
+  renderPerson(persons, type) {
+    const emptyMessage = document.querySelector('.empty-message');
+    if (persons) {
+      this.persons = persons;
+      this.table.parentElement.hidden = false;
+      emptyMessage.innerHTML = '';
+      this.table.innerHTML = PersonItem(persons);
+    }
+    if (persons.length === 0) {
+      this.table.parentElement.hidden = true;
+      switch (type) {
+        case 'search':
+          emptyMessage.innerHTML = "Couldn't find any data";
+          break;
+        default:
+          emptyMessage.innerHTML = 'Data table is null';
+      }
+    }
   }
 
   bindAddPerson(callback) {
@@ -145,6 +169,13 @@ class AppView {
       if (e.target.closest('.delete')) {
         callback(e.target.closest('tr').dataset.id);
       }
+    });
+  }
+
+  bindSearch(callback) {
+    const inputSearch = document.querySelector('#search');
+    inputSearch.addEventListener('input', () => {
+      callback(inputSearch.value);
     });
   }
 }

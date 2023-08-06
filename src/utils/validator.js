@@ -3,9 +3,8 @@ class Validator {
     this.form = document.querySelector(options.form);
     this.errorSelector = options.errorSelector;
     this.rules = options.rules; //bao gồm các rules được yêu cầu trong form
-    this.selectorRules = {}; //bao gồm các rules của một inputElement
     this.onSubmit = options.onSubmit;
-    this.formIsValid = false;
+    this.selectorRules = {}; //bao gồm các rules của một inputElement
 
     this.handleValidator();
   }
@@ -13,16 +12,16 @@ class Validator {
   handleValidator = () => {
     if (this.form) {
       this.form.onsubmit = (e) => {
-        this.formIsValid = true;
+        let formIsValid = true;
         e.preventDefault();
         const selectors = new Set();
         this.rules.forEach((rule) => {
           selectors.add(rule.selector);
           const inputElement = this.form.querySelector(rule.selector);
           let isValid = this.validate(inputElement, rule);
-          if (!isValid) this.formIsValid = false;
+          if (!isValid) formIsValid = false;
         });
-        if (this.formIsValid) this.onSubmit();
+        if (formIsValid) this.onSubmit();
       };
 
       this.rules.forEach((rule) => {
@@ -75,10 +74,6 @@ class Validator {
     }
 
     return !errorMessage;
-  };
-
-  canSubmit = () => {
-    return this.formIsValid;
   };
 }
 
